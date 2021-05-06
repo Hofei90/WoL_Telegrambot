@@ -1,0 +1,11 @@
+broadcast = '<broadcast ip address>'
+wol_port = 9
+
+# MAC Adresse muss mit : getrennt zusammen geschrieben sein
+# Name vorzugsweise ohne -
+[known_computers]
+    "<name>" = "<mac addresse>"
+
+[telegram]
+token = "<telegram token>"
+allowed_ids = {"<Username>" = <userid>}
