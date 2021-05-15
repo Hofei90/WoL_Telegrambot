@@ -55,6 +55,8 @@ def sende_ping(ip):
 
 
 def get_ip_address(mac_address, device_list):
+    print(f"mac_address: {mac_address}")
+    print(f"device_list: {device_list}")
     for device in device_list:
         if mac_address in device:
             break
@@ -63,6 +65,7 @@ def get_ip_address(mac_address, device_list):
     slice_start = device.index("(") + 1
     slice_ende = device.index(")")
     ip = device[slice_start, slice_ende]
+    print(f"IP: {ip}")
     return ip
 
 
