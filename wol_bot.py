@@ -136,7 +136,7 @@ def starte_pc_nach_auswahl(nachricht, bot, users, telegram_id):
     else:
         magic_packet = generate_magic_packet_message(mac_addresse)
         send_magic_packet(CONFIG["broadcast"], CONFIG["wol_port"], magic_packet)
-        threading.Thread(target=check_device_is_reachable, args=(mac_addresse, bot, telegram_id))
+        threading.Thread(target=check_device_is_reachable, args=(mac_addresse, bot, telegram_id)).start()
         bot.send_message(telegram_id, f"Magic Packet an {pc} gesendet")
         users[telegram_id].umenue = None
         users[telegram_id].menue = None
