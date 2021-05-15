@@ -60,6 +60,10 @@ def get_ip_address(mac_address, device_list):
     for device in device_list:
         if mac_address in device:
             break
+        elif mac_address.lower() in device:
+            break
+        elif mac_address.upper() in device:
+            break
     else:
         return
     slice_start = device.index("(") + 1
@@ -78,7 +82,6 @@ def exc_arp_scan():
 
 
 def check_device_is_reachable(mac_address, bot, telegram_id):
-    print("Betrete check_device")
     sleeptime = 20
     time.sleep(sleeptime)
     timeout = 60
@@ -86,6 +89,9 @@ def check_device_is_reachable(mac_address, bot, telegram_id):
 
     device_list = exc_arp_scan()
     ip = get_ip_address(mac_address, device_list)
+    if ip is None:
+        bot.send_message(telegram_id, "Keine IP gefunden")
+        return
     while time.monotonic() - start < timeout:
         result = sende_ping(ip)
         print(f"result: {result}")
@@ -94,7 +100,6 @@ def check_device_is_reachable(mac_address, bot, telegram_id):
             return
         time.sleep(5)
     bot.send_message(telegram_id, f"Ping nicht erfolgreich nach {timeout + sleeptime} Sekunden")
-    print("Ende check device")
 
 
 def sende_verfuegbare_pcs(_, bot, users, telegram_id):
