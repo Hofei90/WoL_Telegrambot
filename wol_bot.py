@@ -97,6 +97,7 @@ def check_ping_result(result):
 
 
 def check_device_is_reachable(mac_address, bot, telegram_id):
+    print("Betrete check_device")
     sleeptime = 20
     time.sleep(sleeptime)
     timeout = 60
@@ -113,7 +114,9 @@ def check_device_is_reachable(mac_address, bot, telegram_id):
         if result:
             bot.send_message(telegram_id, "Ping erfolgreich, Gerät erreichbar")
             return
+        time.sleep(5)
     bot.send_message(telegram_id, f"Ping nicht erfolgreich nach {timeout + sleeptime} Sekunden")
+    print("Ende check device")
 
 
 def sende_verfuegbare_pcs(_, bot, users, telegram_id):
