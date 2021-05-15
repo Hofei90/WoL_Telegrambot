@@ -48,7 +48,8 @@ def send_magic_packet(address, port, message):
 def sende_ping(ip):
     """pingt die IP 2x an
     return (0 | !0) 0 wenn erreichbar"""
-    befehl = "ping -c2 -W1 {}".format(ip)
+    print(f"IP: {ip}")
+    befehl = "/usr/bin/ping -c2 -W1 {}".format(ip)
     cmd = shlex.split(befehl)
     return subprocess.call(cmd)
 
