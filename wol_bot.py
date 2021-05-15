@@ -50,7 +50,7 @@ def sende_ping(ip):
     return (0 | !0) 0 wenn erreichbar"""
     befehl = "ping -c2 -W1 {}".format(ip)
     cmd = shlex.split(befehl)
-    return subprocess.run(cmd, capture_output=True).stdout.decode("utf-8")
+    return subprocess.call(cmd)
 
 
 def get_ip_address(mac_address, device_list):
@@ -73,29 +73,6 @@ def exc_arp_scan():
     return device_list
 
 
-def check_ping_result(result):
-    result_list = result.split("\n")
-    for line in result_list:
-        if "received" and "loss" in line:
-            received = line.split(",")[1]
-            value = ""
-            char = ""
-            for char in received:
-                if char.isdigit():
-                    value += char
-                else:
-                    break
-
-            value = int(char)
-            break
-    else:
-        return None
-    if value == 0:
-        return False
-    else:
-        return True
-
-
 def check_device_is_reachable(mac_address, bot, telegram_id):
     print("Betrete check_device")
     sleeptime = 20
@@ -106,12 +83,9 @@ def check_device_is_reachable(mac_address, bot, telegram_id):
     device_list = exc_arp_scan()
     ip = get_ip_address(mac_address, device_list)
     while time.monotonic() - start < timeout:
-        ping_result = sende_ping(ip)
-        result = check_ping_result(ping_result)
-        if result is None:
-            bot.send_message(telegram_id, "Ping fehlerhaft, Skript oder IP Prüfen")
-            return
-        if result:
+        result = sende_ping(ip)
+        print(f"result: {result}")
+        if not result:
             bot.send_message(telegram_id, "Ping erfolgreich, Gerät erreichbar")
             return
         time.sleep(5)
