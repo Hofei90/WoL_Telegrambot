@@ -68,7 +68,7 @@ def get_ip_address(mac_address, device_list):
         return
     slice_start = device.index("(") + 1
     slice_ende = device.index(")")
-    ip = device[slice_start, slice_ende]
+    ip = device[slice_start:slice_ende]
     print(f"IP: {ip}")
     return ip
 
