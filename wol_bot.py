@@ -144,7 +144,7 @@ def bot_command(nachricht, bot, users, telegram_id):
     kommando = nachricht["message"]["text"]
     if kommando == "/starte_pc":
         m_starte_pc(nachricht, bot, users, telegram_id)
-    if kommando == "/abbrechen":
+    elif kommando == "/abbrechen":
         m_abbrechen(nachricht, bot, users, telegram_id)
     elif users[telegram_id].menue is not None:
         users[telegram_id].menue(nachricht, bot, users, telegram_id)
