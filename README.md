@@ -23,6 +23,7 @@ Bei Telegram Botfather einen neuen Telegrambot erstellen und den Bottoken für d
 Zu regestrierende Botbefehler beim Botfather
 ```jsunicoderegexp
 /starte_pc - Sendet eine Liste der eingetragenen Geräte
+/abbrechen - Bricht die Aktionen ab und verlässt alle Menüs
 ```
 
 ### Installation
