@@ -20,7 +20,10 @@ Das zu startende Gerät muss für Wake on Lan konfiguriert sein. Wie dies für d
 kann an dieser Stelle nicht erklärt werden aufgrund der vielfalt an Geräten.
 
 Bei Telegram Botfather einen neuen Telegrambot erstellen und den Bottoken für die Konfiguration bereithalten
-
+Zu regestrierende Botbefehler beim Botfather
+```jsunicoderegexp
+/starte_pc - Sendet eine Liste der eingetragenen Geräte
+```
 
 ### Installation
 
