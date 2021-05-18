@@ -3,7 +3,7 @@
 ## Ziel des Projektes
 
 Der WoL (Wake on Lan) Telegram Bot lässt Geräte mit Hilfe von
-Magic Pakets starten.
+Magic Pakete starten.
 
 ### Ablauf
 
@@ -81,9 +81,9 @@ WantedBy=multi-user.target
 
 ```code 
 chmod 644 /etc/systemd/system/wol_telegrambot.service
-systemctl start smartmeter.service
+systemctl start wol_telegrambot.service
 ```
 
 Kontrolle ob Skript nun wieder aktiv ist, wenn ja automatische Ausführung anlegen:
 
-`systemctl enable smartmeter.service`
+`systemctl enable wol_telegrambot.service`
