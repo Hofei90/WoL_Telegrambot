@@ -1,2 +1,2 @@
-git+https://github.com/Hofei90/telegram_api@0.2
-toml==0.10.2
+git+https://github.com/Hofei90/telegram_api@v0.2
+toml>=0.10.2
